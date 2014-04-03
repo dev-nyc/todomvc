@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" data-framework="backbonejs">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Backbone.js • TodoMVC</title>
+		<link rel="stylesheet" href="css/normalize.css">
+       	<link rel="stylesheet" href="css/bootstrap.min.css">
+       	<link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/modernizr-2.7.1.min.js"></script>
+        <link rel="stylesheet" href="bower_components/todomvc-common/base.css">
+	</head>
+	<body>
+		<section id="todoapp">
+			<header id="header">
+				<h1>todos</h1>
+				<div class="row">
+						<div class="col-sm-6">
+							<input id="new-todo" placeholder="Enter Task" autofocus>
+						</div>
+						<div class="col-sm-6">
+							<input id="new-date" type="date">
+						</div>
+					</div>
+			</header>
+			<section id="main">
+				<input id="toggle-all" type="checkbox">
+				<label for="toggle-all">Mark all as complete</label>
+				<ul id="todo-list"></ul>
+			</section>
+			<footer id="footer"></footer>
+		</section>
+		<footer id="info">
+			<p>Double-click to edit a todo/Swipe to complete a task</p>
+			<p>Written by <a href="https://github.com/addyosmani">Addy Osmani</a></p>
+			<p>Backbone.hammer.js plugin made by<a href="https://gist.github.com/wookiehangover/5936165">Wookiehangover</a></p>
+			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+			<p>Modified by Alex Davila with the help of Joshua Villahermosa. This is a proof of concept using backbone.js and hammer.js</p>
+		</footer>
+		<script type="text/template" id="item-template">
+			<div class="view">
+				<input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
+				<label><%- title %>  <%- date %> </label>
+				<button class="destroy"></button>
+			</div>
+			<input class="edit" value="<%- title %>">
+		</script>
+		<script type="text/template" id="stats-template">
+			<span id="todo-count"><strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %> left</span>
+			<ul id="filters">
+				<li>
+					<a class="selected" href="#/">All</a>
+				</li>
+				<li>
+					<a href="#/active">Active</a>
+				</li>
+				<li>
+					<a href="#/completed">Completed</a>
+				</li>
+			</ul>
+			<% if (completed) { %>
+			<button id="clear-completed">Clear completed (<%= completed %>)</button>
+			<% } %>
+		</script>
+		<script src="bower_components/todomvc-common/base.js"></script>
+		<script src="bower_components/jquery/jquery.js"></script>
+		<script src="bower_components/underscore/underscore.js"></script>
+		<script src="bower_components/backbone/backbone.js"></script>
+		<script src="bower_components/backbone.localStorage/backbone.localStorage.js"></script>
+		<script src="js/hammer.min.js"></script>
+		<script src="js/jquery.hammer-full.min.js"></script>
+		<script src="js/backbone.hammer.js"></script>
+
+		<script src="js/models/todo.js"></script>
+		<script src="js/collections/todos.js"></script>
+		<script src="js/views/todo-view.js"></script>
+		<script src="js/views/app-view.js"></script>
+		<script src="js/routers/router.js"></script>
+		<script src="js/app.js"></script>
+	</body>
+</html>
